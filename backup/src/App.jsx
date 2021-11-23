@@ -1,9 +1,11 @@
+import React from 'react';
+
 const App = () => {
   return (
     <>
-      App Template
+      app
     </>
   );
-}
+};
 
 export default App;
