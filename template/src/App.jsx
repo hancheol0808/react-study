@@ -1,32 +1,40 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const App = () => {
   const [_arr,_setArr] = useState([])
-  const fnAdd = () =>{
-    let key = Date.now()
-    _setArr([..._arr,key])
+  const refInput1 = useRef()
+  const refInput2 = useRef()
+  const fnAdd = ()=>{
+    let AddName = refInput1.current.value
+    let obj = {
+      key : Date.now(),
+      name : AddName
+    }
+    _setArr([..._arr,obj])
   }
-  const fnDel =(e) =>{
-    let key = parseInt(e.target.getAttribute("data-n"))
-    let arr =_arr.filter((v)=>{
-      return v != key
+  const fnDel = () =>{
+    let DelName = refInput2.current.value
+    let arr = _arr.filter((v)=>{
+      return v.name != DelName
     })
     _setArr(arr)
   }
-  return (
+  return (  
     <>
-      <button onClick={fnAdd}>배열추가</button>
+      <p>이름을 추가하거나 제거하면 목록이 li객체로 출력됩니다</p>
+      <input ref={refInput1} type="text" /> &nbsp;
+      <button onClick={fnAdd}>추가</button>
+      <br />
+      <input ref={refInput2} type="text" /> &nbsp;
+      <button onClick={fnDel}>제거</button>
       <hr />
-      {
-        _arr.map((v)=>{
-          return(
-            <p key={v}>
-              {v}
-              <button data-n={v} onClick={fnDel}>삭제</button>
-            </p>
-          )
-        })
-      }
+      <ul>
+        {
+          _arr.map((v)=>{
+            return <li key = {v.key}>{v.name}</li>
+          })
+        }
+      </ul>
     </>
   );
 };
