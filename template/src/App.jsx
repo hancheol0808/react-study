@@ -1,42 +1,14 @@
-import React, { useRef, useState } from 'react';
+import CompBtnContainer from "./comp/CompBtnContainer";
+import CompOutput from "./comp/CompOutput";
 
 const App = () => {
-  const [_arr,_setArr] = useState([])
-  const refInput1 = useRef()
-  const refInput2 = useRef()
-  const fnAdd = ()=>{
-    let AddName = refInput1.current.value
-    let obj = {
-      key : Date.now(),
-      name : AddName
-    }
-    refInput1.current.value=""
-    _setArr([..._arr,obj])
-  }
-  const fnDel = () =>{
-    let DelName = refInput2.current.value
-    let arr = _arr.filter((v)=>{
-      return v.name != DelName
-    })
-    refInput2.current.value=""
-    _setArr(arr)
-  }
-  return (  
+  
+  return (
     <>
-      <p>이름을 추가하거나 제거하면 목록이 li객체로 출력됩니다</p>
-      <input ref={refInput1} type="text" /> &nbsp;
-      <button onClick={fnAdd}>추가</button>
-      <br />
-      <input ref={refInput2} type="text" /> &nbsp;
-      <button onClick={fnDel}>제거</button>
-      <hr />
-      <ul>
-        {
-          _arr.map((v)=>{
-            return <li key = {v.key}>{v.name}</li>
-          })
-        }
-      </ul>
+      <main>
+        <CompOutput /> 
+        <CompBtnContainer/>
+      </main>
     </>
   );
 };

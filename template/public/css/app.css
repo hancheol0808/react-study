@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(#000, #222);
+  background: linear-gradient(#000, #444);
 }
 
 #root {
@@ -16,6 +16,7 @@ main {
   height: 100%;
   max-width: 400px;
   max-height: 600px;
+  box-sizing: border-box;
   padding: 15px;
   background: linear-gradient(#ddd, #ccc);
 }
@@ -25,18 +26,18 @@ main {
   height: 30%;
   border-radius: 10px;
   background: #fff;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .output::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .output::-webkit-scrollbar {
-  width: 10px;
-  background-color: #F5F5F5;
+  width: 8px;
+  background-color: #f5f5f5;
 }
 
 .output::-webkit-scrollbar-thumb {
@@ -47,8 +48,8 @@ main {
 
 .btnContainer {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
   flex: 1;
   margin-top: 15px;
@@ -60,11 +61,12 @@ main {
 }
 
 .btnContainer button {
-  background: #fff;
+  outline: none;
+  pointer-events: fill;
   width: calc(25% - 11.25px);
   margin-bottom: 15px;
-  border-radius: 10px;
-  pointer-events: fill;
+  border-radius: 5px;
+  background: #FFF;
   transition: all 0.05s;
 }
 
@@ -74,22 +76,22 @@ main {
 
 .btnContainer button.clear {
   background: red;
-  color: #fff;
+  color: #FFF;
 }
 
 .btnContainer button.delete {
   background: black;
-  color: #fff;
+  color: #FFF;
 }
 
 .btnContainer button.calc {
   background: orange;
-  color: #fff;
+  color: #FFF;
 }
 
 .btnContainer button:active {
   transform: scale(1.2);
-  opacity: 1;
   z-index: 1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
