@@ -1,0 +1,50 @@
+■ 컴포넌트 설계 이유
+  ● 반복되서 사용되는 객체를 독립적인 템플릿형태로 제작한다
+  ● 앱의 퍼포먼스를 향상한다. (렌더링의 속도를 향상)
+
+■ 컴포넌트 설계 방법
+  ● JSX파일을 별도로 생성 (첫글자는 대문자, 파스칼케이스를 사용)
+  ● 컴포넌트 사용시 해당 파일을 import 해야함
+
+■ porp
+  ● 상위 컴포넌트에서 생성된 함수나 변수를 하위 컴포넌트에 전달한다
+  ● 상위 컴퍼넌트 _n을 하위 컴퍼넌트인 CopmOutput에게 prop_n으로 전달 예시
+    <CompOutput prop_n={_n}/>
+  ● 상위컴포넌트로부터 전달받은 prop_n으로 전달 예시
+    const CompOutput = (prop_n) => {
+      return (
+        <>
+          <p>{prop_n}</p>
+        </>
+      );
+    };
+
+■ 조건부 컴포넌트 출력
+  ● 조건에 따라 컴퍼넌트를 출력시에는 삼항연산자를 이용한다.
+    ex)_init변수사 comp1일경우 Comp1컴포넌트를 출력한다
+      {
+        (_init==="comp1")? <Comp1/> : <Comp2/> //삼항연산자
+      } 
+    ex) num변수가 조냊할경우 버튼을 출력하는 방법
+      (!_num)&&<button onClick={fnShowNum}>숫자생성</button> //이항연산자
+
+■ useEffect (생명주기)   
+  ● 컴포넌트가 브라우저 화면에 출력됨 (mount), 스테이트가 변한때 (update), 화면에서 제거(unmount)
+  ● 
+  ● 컴퍼넌트가 마운트되었을때와, 업데이트(sate변수가 변경) 될 때마자 메세지 출력하기 
+    ex)
+    useEffect(()=>{
+      console.log("comp1 마운트 되었습니다");
+    })
+  ● 컴퍼넌트가 마운트되었을때만 메세지 출력하기 (deps array를 사용)
+    ex)
+    useEffect(()=>{
+      console.log("comp1 마운트 되었습니다");
+    },[])
+  ● 컴퍼넌트가 언마운트되었을때 메세지 출력하기 (return의 콜백함수를 사용)
+    ex)
+    useEffect(()=>{
+      return(()=>{
+        console.log("comp1 언마운트 되었습니다");
+      }
+    },[])
