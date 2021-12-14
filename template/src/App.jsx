@@ -10,6 +10,7 @@ const App = () => {
       key : Date.now(),
       name : AddName
     }
+    refInput1.current.value=""
     _setArr([..._arr,obj])
   }
   const fnDel = () =>{
@@ -17,6 +18,7 @@ const App = () => {
     let arr = _arr.filter((v)=>{
       return v.name != DelName
     })
+    refInput2.current.value=""
     _setArr(arr)
   }
   return (  
